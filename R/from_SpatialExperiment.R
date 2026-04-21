@@ -23,6 +23,7 @@
 #' @param ... See [as_AnnData()]
 #'
 #' @return An AnnData object
+#' @export
 #' @importFrom SpatialExperiment SpatialExperiment spatialCoords imgData
 #' @noRd
 from_SpatialExperiment <- function(

@@ -15,7 +15,7 @@
 #' as `imgData`.
 #' @param library_id One of `"auto"`, `"sample_id"`, or a column name in
 #' `colData` to use as sample/library identifier.
-#'
+#' @export
 #' @return A SpatialExperiment object
 #' @noRd
 as_SpatialExperiment <- function(
