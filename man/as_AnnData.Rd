@@ -4,6 +4,7 @@
 \alias{as_AnnData}
 \alias{as_AnnData.SingleCellExperiment}
 \alias{as_AnnData.Seurat}
+\alias{as_AnnData.SpatialExperiment}
 \title{Convert to an \code{AnnData} object}
 \usage{
 as_AnnData(
@@ -49,6 +50,26 @@ as_AnnData(
   obsp_mapping = TRUE,
   varp_mapping = TRUE,
   uns_mapping = TRUE,
+  assay_name = NULL,
+  output_class = c("InMemory", "HDF5AnnData", "ReticulateAnnData"),
+  ...
+)
+
+\method{as_AnnData}{SpatialExperiment}(
+  x,
+  x_mapping = NULL,
+  layers_mapping = TRUE,
+  obs_mapping = TRUE,
+  var_mapping = TRUE,
+  obsm_mapping = TRUE,
+  varm_mapping = TRUE,
+  obsp_mapping = TRUE,
+  varp_mapping = TRUE,
+  uns_mapping = TRUE,
+  spatialCoords_mapping = "spatial",
+  imgData_mapping = TRUE,
+  library_id = "auto",
+  image_mode = c("embed", "reference", "none"),
   assay_name = NULL,
   output_class = c("InMemory", "HDF5AnnData", "ReticulateAnnData"),
   ...

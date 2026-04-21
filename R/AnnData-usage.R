@@ -126,3 +126,35 @@
 #'
 #' @name AnnData-usage
 NULL
+
+
+#' @export
+as_SpatialExperiment.AbstractAnnData <- function(
+    x,
+    x_mapping=NULL,
+    assays_mapping=TRUE,
+    colData_mapping=TRUE,
+    rowData_mapping=TRUE,
+    reducedDims_mapping=TRUE,
+    colPairs_mapping=TRUE,
+    rowPairs_mapping=TRUE,
+    metadata_mapping=TRUE,
+    spatialCoords_mapping="spatial",
+    imgData_mapping=TRUE,
+    library_id="auto"
+) {
+    as_SpatialExperiment(
+        adata=x,
+        x_mapping=x_mapping,
+        assays_mapping=assays_mapping,
+        colData_mapping=colData_mapping,
+        rowData_mapping=rowData_mapping,
+        reducedDims_mapping=reducedDims_mapping,
+        colPairs_mapping=colPairs_mapping,
+        rowPairs_mapping=rowPairs_mapping,
+        metadata_mapping=metadata_mapping,
+        spatialCoords_mapping=spatialCoords_mapping,
+        imgData_mapping=imgData_mapping,
+        library_id=library_id
+    )
+}

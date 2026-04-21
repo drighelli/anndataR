@@ -257,3 +257,44 @@ as_AnnData.Seurat <- function(
     ...
   )
 }
+
+#' @rdname as_AnnData
+#' @export
+as_AnnData.SpatialExperiment <- function(
+    x,
+    x_mapping=NULL,
+    layers_mapping=TRUE,
+    obs_mapping=TRUE,
+    var_mapping=TRUE,
+    obsm_mapping=TRUE,
+    varm_mapping=TRUE,
+    obsp_mapping=TRUE,
+    varp_mapping=TRUE,
+    uns_mapping=TRUE,
+    spatialCoords_mapping="spatial",
+    imgData_mapping=TRUE,
+    library_id="auto",
+    image_mode=c("embed", "reference", "none"),
+    assay_name=NULL,
+    output_class=c("InMemory", "HDF5AnnData", "ReticulateAnnData"),
+    ...
+) {
+    from_SpatialExperiment(
+        spe=x,
+        x_mapping=x_mapping,
+        layers_mapping=layers_mapping,
+        obs_mapping=obs_mapping,
+        var_mapping=var_mapping,
+        obsm_mapping=obsm_mapping,
+        varm_mapping=varm_mapping,
+        obsp_mapping=obsp_mapping,
+        varp_mapping=varp_mapping,
+        uns_mapping=uns_mapping,
+        spatialCoords_mapping=spatialCoords_mapping,
+        imgData_mapping=imgData_mapping,
+        library_id=library_id,
+        image_mode=image_mode,
+        output_class=output_class,
+        ...
+    )
+}

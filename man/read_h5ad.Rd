@@ -6,7 +6,8 @@
 \usage{
 read_h5ad(
   path,
-  as = c("InMemoryAnnData", "HDF5AnnData", "SingleCellExperiment", "Seurat"),
+  as = c("InMemoryAnnData", "HDF5AnnData", "SingleCellExperiment", "SpatialExperiment",
+    "Seurat"),
   mode = c("r", "r+", "a", "w", "w-", "x"),
   ...
 )
