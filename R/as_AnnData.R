@@ -262,7 +262,7 @@ as_AnnData.Seurat <- function(
 #' @export
 as_AnnData.SpatialExperiment <- function(
     x,
-    x_mapping=NULL,
+    x_mapping=TRUE,
     layers_mapping=TRUE,
     obs_mapping=TRUE,
     var_mapping=TRUE,

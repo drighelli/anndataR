@@ -71,6 +71,12 @@ from_SingleCellExperiment <- function(
     SummarizedExperiment::assayNames(sce) <- assay_names
   }
 
+  x_mapping <- get_mapping(
+    x_mapping,
+    .from_SCE_guess_X,
+    sce,
+    "x_mapping"
+  )
   layers_mapping <- get_mapping(
     layers_mapping,
     .from_SCE_guess_layers,
@@ -134,12 +140,7 @@ from_SingleCellExperiment <- function(
 
   .from_SCE_process_var(adata, sce, var_mapping)
 
-  # trackstatus: class=SingleCellExperiment, feature=set_X, status=done
-  if (!is.null(x_mapping)) {
-    adata$X <- .from_SCE_convert(
-      SummarizedExperiment::assay(sce, x_mapping, withDimnames = FALSE)
-    )
-  }
+  .from_SCE_process_X(adata, sce, x_mapping)
 
   .from_SCE_process_layers(adata, sce, layers_mapping)
 
@@ -160,6 +161,19 @@ from_SingleCellExperiment <- function(
 .from_SCE_guess_all <- function(sce, slot) {
   # nolint end: object_length_linter object_name_linter
   self_name(names(slot(sce)))
+}
+
+# nolint start: object_name_linter
+.from_SCE_guess_X <- function(sce) {
+  # nolint end: object_name_linter
+  if (length(SummarizedExperiment::assays(sce)) > 0) {
+    nms <- SummarizedExperiment::assayNames(sce)
+    if ("X" %in% nms) {
+      return("X")
+    }
+    return(nms[[1]])
+  }
+  NULL
 }
 
 # nolint start: object_length_linter object_name_linter
@@ -304,6 +318,17 @@ from_SingleCellExperiment <- function(
       as.data.frame(row.names = rownames(sce)) |>
       setNames(names(var_mapping))
   }
+}
+
+.from_SCE_process_X <- function(adata, sce, x_mapping) {
+  if (rlang::is_empty(x_mapping)) {
+    return(invisible())
+  }
+
+  x_key <- x_mapping[[1]]
+  adata$X <- .from_SCE_convert(
+    SummarizedExperiment::assay(sce, x_key, withDimnames = FALSE)
+  )
 }
 
 # trackstatus: class=SingleCellExperiment, feature=set_layers, status=done

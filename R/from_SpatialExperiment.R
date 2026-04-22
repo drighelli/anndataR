@@ -28,7 +28,7 @@
 #' @noRd
 from_SpatialExperiment <- function(
     spe,
-    x_mapping=NULL,
+    x_mapping=TRUE,
     layers_mapping=TRUE,
     obs_mapping=TRUE,
     var_mapping=TRUE,
