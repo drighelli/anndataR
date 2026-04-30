@@ -57,7 +57,7 @@ as_AnnData(
 
 \method{as_AnnData}{SpatialExperiment}(
   x,
-  x_mapping = NULL,
+  x_mapping = TRUE,
   layers_mapping = TRUE,
   obs_mapping = TRUE,
   var_mapping = TRUE,
